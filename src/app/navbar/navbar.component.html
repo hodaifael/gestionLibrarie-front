@@ -1,0 +1,75 @@
+ 
+
+
+
+    <!-- BEGIN: Main Menu-->
+    <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="false">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav flex-row">
+                <li class="nav-item mr-auto"><a class="navbar-brand" >
+                        <img class="logo" src="../../../assets/images/logo/logo.png" />
+                        <h2 class="brand-text mb-0" style="color:#9A3353" >Barae</h2>
+                    </a></li>
+                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary" data-ticon="icon-disc"></i></a></li>
+            </ul>
+        </div>
+        <div class="shadow-bottom"></div>
+        <div class="main-menu-content">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+               
+                <li class=" navigation-header"><span>Gestion d'Achat</span>
+                </li>
+
+                <li *ngIf="checklogin()" class=" nav-item"><a routerLink="addcommande"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Email">Commande Client</span></a>
+                </li>
+                <li *ngIf="checklogin()" class=" nav-item"><a routerLink="caisse"><i class="fa fa-cart-arrow-down"></i><span class="menu-title" data-i18n="Email">Caisse</span></a>
+                </li>
+                <li *ngIf="checklogin()" class=" nav-item"><a routerLink="addclient"><i class="fa fa-server"></i><span class="menu-title" data-i18n="Email">Add Client Fidele</span></a>
+                </li>
+                <li  *ngIf="checklogin()" class=" nav-item"><a routerLink="AddDebiteur"><i class="fa fa-money"></i><span class="menu-title" data-i18n="Email">Add debiteur</span></a>
+                </li>
+                <li class=" navigation-header"><span>Gestion Produits </span>
+                </li>
+                <li *ngIf="checklogin()" class=" nav-item"><a routerLink="stock"><i class="fa fa-area-chart"></i><span class="menu-title" data-i18n="Email">Stock</span></a>
+                </li>
+                 <li *ngIf="checktype()" class=" nav-item"><a routerLink="transfer"><i class="fa fa-sort"></i><span class="menu-title" data-i18n="Email">Transfer</span></a>
+                </li>
+                <li *ngIf="checktype()" class=" nav-item"><a routerLink="stock_global"><i class="fa fa-university"></i><span class="menu-title" data-i18n="Email">Stock Global</span></a>
+                </li>
+                <li *ngIf="checktype()" class=" nav-item"><a routerLink="facture"><i class="fa fa-th-list"></i><span class="menu-title" data-i18n="Email">Facture</span></a>
+                </li>
+                <li *ngIf="checklogin()"  class=" nav-item"><a routerLink="commandeFour"><i class="fa fa-server"></i><span class="menu-title" data-i18n="Email">commande Fourniss</span></a>
+                </li>
+                <li  *ngIf="checklogin()" class=" nav-item"><a routerLink="niveau"><i class="fa fa-level-up"></i><span class="menu-title" data-i18n="Email">Add Niveau</span></a>
+                </li>
+                <li *ngIf="checktype()" class=" nav-item"><a routerLink="fournisseur"><i class="fa fa-truck"></i><span class="menu-title" data-i18n="Email">fournisseur</span></a>
+                </li>
+                <li *ngIf="checklogin()" class=" nav-item"><a routerLink="khadamat"><i class="fa fa-window-restore"></i><span class="menu-title" data-i18n="Email">khadamat</span></a>
+                </li>
+                <li *ngIf="checklogin()" class=" nav-item"><a routerLink="entree_sortie"><i class="fa fa-random"></i><span class="menu-title" data-i18n="Email">Entree_Sortie</span></a>
+                </li>
+                <li  class=" navigation-header"><span>Gestion users </span>
+                </li>
+                 <li *ngIf="checklogin()" class=" nav-item"><a routerLink="QR"><i class="fa fa-qrcode"></i><span class="menu-title" data-i18n="Email">QR Code Client</span></a>
+                </li>
+                 <li *ngIf="checklogin()" class=" nav-item"><a routerLink="AddQRproduct"><i class="fa fa-qrcode"></i><span class="menu-title" data-i18n="Email">Add Code Product</span></a>
+                </li>
+                 <li *ngIf="checktype()" class=" nav-item"><a routerLink="retour"><i class="feather icon-repeat"></i><span class="menu-title" data-i18n="Email">Retour</span></a>
+                </li>
+                <li *ngIf="checktype()" class=" nav-item"><a routerLink="users"><i class="fa fa-users"></i><span class="menu-title" data-i18n="Email">Add Users</span></a>
+                </li>
+                <li *ngIf="checktype()" class=" nav-item"><a routerLink="chiffre"><i class="feather icon-bar-chart-2"></i><span class="menu-title" data-i18n="Email">Chiffre</span></a>
+                </li>
+                <li *ngIf="checktype()" class=" nav-item"><a routerLink="statistique"><i class="feather icon-bar-chart-2"></i><span class="menu-title" data-i18n="Email">Statistique</span></a>
+                </li>
+                
+                <li *ngIf="checklogin()" class=" nav-item"><a (click)="logout()"><i class="fa fa-power-off"></i><span class="menu-title" data-i18n="Email">Logout</span></a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+    <!-- END: Main Menu-->
+
+        <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>

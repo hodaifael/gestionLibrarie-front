@@ -1,0 +1,122 @@
+
+<div class="container-fluid ">
+<div style="top:20px;font-size: 18px;" class="app-content content">
+                <!-- Data list view starts -->
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div class="top">
+                            <div class="actions action-btns">
+                                <div class="dt-buttons btn-group">
+                                    <button class="btn bg-gradient-info mr-1 mb-1" (click)="mois()" >
+                                        <span><i class="feather icon-plus"></i> Le mois en cours</span>
+                                    </button>                         
+                                </div>
+                            </div>         
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                    <section id="pick-a-date">
+                            <div class="card">
+                                <div class="card-body">
+                                    <input type='month' [(ngModel)]="date" (keyup.enter)="changedate($event)" class="form-control pickadate-months-year" />
+                                </div>
+                            </div>    
+                        </section>
+                    </div>
+                </div>  
+                            
+                <section  class="data-thumb-view-header">
+                  
+                  <div class="card">
+                    <!-- dataTable starts -->
+                  <div class="table-responsive">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                         
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>date</th>
+                                    <th>Caisse</th>
+                                    <th>Commande</th>
+                                    <th>Retour</th>
+                                    <th>total ligne</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                             
+                                <tr *ngFor="let emp of chiffres ">                                      
+                                   
+                                    <td class="product-price">{{ emp.date }}</td>
+
+                                    <td>
+                                        <div class="chip chip-success">
+                                            <div class="chip-body">
+                                                <div class="chip-text" style="font-size: 18px;">{{ emp.caisse }}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                     <td>
+                                        <div class="chip chip-info">
+                                            <div class="chip-body">
+                                                <div class="chip-text" style="font-size: 18px;">{{ emp.commande }}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="chip chip-danger">
+                                            <div class="chip-body">
+                                                <div class="chip-text" style="font-size: 18px;">{{ emp.retour }}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="chip chip-warning">
+                                            <div class="chip-body">
+                                                <div class="chip-text" style="font-size: 18px;">{{ emp.totalligne }}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                   
+                                </tr>
+                                <tr>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    total
+                                </td>
+                                <td>
+                                        <div class="chip chip-dark">
+                                            <div class="chip-body">
+                                                <div class="chip-text" style="font-size: 15px;">{{ total }}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                
+                                </tr>
+                              
+                            </tbody>
+                        </table>
+                       
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- dataTable ends -->
+                
+
+                    <!-- add new sidebar ends -->
+                </section>
+                <!-- Data list view end -->
+
+            </div>
+       
+        </div>
+
+
+    <!-- END: Content-->
+
+    

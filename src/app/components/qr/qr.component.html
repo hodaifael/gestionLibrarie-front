@@ -1,0 +1,16 @@
+            <div class="container-fluid ">
+            <div style="top:20px;font-size: 18px;" class="app-content content">
+                <section  class="data-thumb-view-header">
+                    
+                    <div class="row">
+                        <div *ngFor="let emp of list ">
+                            <div  class="col-12 col-md-4">
+                                {{ affiche(emp) }}
+                                <qrcode [qrdata]="myAngularxQrCode"  [width]="200" [level]="'M'"></qrcode>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>

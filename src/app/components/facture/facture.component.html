@@ -1,0 +1,225 @@
+
+<div class="container-fluid ">
+<div style="top:20px;" class="app-content content">
+    <div class="row">
+        <div class="col-12 col-md-2">
+            <div class="top">
+                <div class="actions action-btns">
+                    <div class="dt-buttons btn-group">
+                        <div class="row">
+                            <div class="col-12 col-md-12">
+                                <button class="btn bg-gradient-success mr-1 mb-1" routerLink="../addstock" >
+                                    <span><i class="feather icon-plus"></i> New product</span>
+                                </button>
+                            </div>
+                           
+                            
+                        </div>                
+                    </div>
+                </div>         
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <span class="alert alert-primary">numero facture interne</span>
+            <section id="search-bar">
+                    <div class="search-bar">
+                        <div class="card">
+                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 col-md-7">
+                                        <input style="margin-left:0px;" type="text" [(ngModel)]="numFinterne" (keyup)="chagenumFinterne($event)"   class="form-control round" id="searchbar" >
+                                    </div>    
+                                    <div class="col-12 col-md-5">
+                                        <button style="margin-right:20px;" class="btn bg-gradient-dark " (click)="selectFinterne()" (dblclick)="getLastfacture()" >  <span> search</span></button>
+                                    </div>    
+                                </div>    
+                            </div>    
+                        </div>
+                    </div>
+            </section>
+        </div>
+        <div class="col-12 col-md-3">
+            <span class="alert alert-primary">numero facture fournisseur</span>
+            <section id="search-bar">
+                    <div class="search-bar">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 col-md-7">
+                                        <input style="margin-left:0px;" type="text" [(ngModel)]="numfacture" (keyup)="chagenumFinterne($event)"   class="form-control round" id="searchbar" >
+                                    </div>    
+                                    <div class="col-12 col-md-5">
+                                        <button style="margin-right:20px;" class="btn bg-gradient-dark " (click)="selectnumfacture()"  >  <span> search</span></button>
+                                    </div>    
+                                </div>    
+                            </div>    
+                        </div>
+                    </div>
+            </section>
+        </div>
+        <div class="col-12 col-md-3" style="height:20px;">
+            <span class="alert alert-primary">fournisseur</span>
+            <section id="search-bar">
+                <div class="search-bar">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 col-md-7">
+                                    <div class="form-group">
+                                        <select class="select2 form-control" [(ngModel)]="numfour">
+                                            <option *ngFor="let emp of fournisseurs"   [value]="emp.numfour">{{emp.numfour}} : {{emp.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>    
+                                <div class="col-12 col-md-5">
+                                    <button style="margin-right:20px;" class="btn bg-gradient-dark " (click)="chagenumfournisseur()"  >  <span> change</span></button>
+                                </div>    
+                            </div>    
+                        </div>    
+                    </div>
+                </div>
+            </section>
+        </div>     
+    </div>     
+     
+    <section id="search-bar">
+        <div class="search-bar">            
+            <fieldset class="form-group position-relative has-icon-left">
+            <input type="text" [(ngModel)]="search" (input)="searchByname()" class="form-control round"  >
+            <div class="form-control-position">
+                <i class="feather icon-search px-1"></i>
+            </div>
+            </fieldset>
+                        
+        </div>
+    </section>      
+    <div class="row">
+        <div class="col-12 col-md-5">                 
+            <div class="content-body">
+                <!-- Basic example and Profile cards section start -->
+                <section id="basic-examples" ng-if="products.length > 0">
+                    <div class="row match-height" >
+                        
+                        
+                        <div class="col-xl-6 col-md-8 col-sm-12" *ngFor="let emp of products ">
+                            <div class="card">
+                                <div class="card-content">
+                                    <img class="card-img-top img-fluid" src="{{ path }}{{ emp.img }}" style="width:295px;height:190px;" >
+                                    <div class="card-body">
+                                        <h5>{{ emp.name }}</h5><br>
+                                        <h5>{{emp.codep}}</h5>
+                                        
+                                        <div class="card-btns d-flex justify-content-between mt-2">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-5">
+                                                            <span class="card-text" style="font-size: 18px;">PU: {{ emp.pu }}</span><br>
+                                                            <span class="card-text" style="font-size: 18px;">Qt: {{ emp.qt }}</span>
+                                                        </div>
+                                                        <div class="col-12 col-md-7"> 
+                                                            <input type="search" (keyup.enter)="changequantite($event,emp.codep)"  class="form-control round"  placeholder="quantite"/>
+                                                        </div>     
+                                                            
+                                                    </div>     
+                                                </div>  
+                                                <br> 
+                                                <br> 
+                                                <div class="col-12 col-md-4">    
+                                                    <span><a class="action-edit" routerLink="../editproduct/{{ emp.id }}" ><i  style="width:50px;height:50px;" class="feather icon-edit fa-2x"></i></a></span>
+                                                </div>  
+                                                <div class="col-12 col-md-8">   
+                                                    <button class="btn bg-gradient-success mr-1 mb-1" routerLink="../duplique/{{ emp.id }}" >
+                                                        <span>duplique</span>
+                                                    </button>                                               
+                                                </div>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                             
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+            <div class="col-6 col-md-7 ">
+                <section id="place-order" class="list-view product-checkout">
+                    <div class="checkout-options">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <section id="search-bar">
+                                            <div class="search-bar">
+                                                <fieldset class="form-group position-relative has-icon-left">
+                                                    <input type="number" (keyup.enter)="addProductInput($event)"  class="form-control round" autofocus />    
+                                                    <div class="form-control-position">
+                                                            <i class="feather icon-search px-1"></i>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </section>   
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+                                                
+                                                    <th>Img</th>
+                                                    <th>name</th>
+                                                    <th>pu</th>
+                                                    <th>pht</th>
+                                                    <th>qt</th>
+                                                    <th>u</th>
+                                                    <th>Tot</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let emp of facture " style="font-size: 20px;">
+                                                    <td class="product-img" style="max-width: 80px;"><img src="{{ path }}{{ emp.img }}" style="width:60px;height:60px;border-radius: 10px;" alt="Img placeholder"></td>
+                                                    <td class="product-price" style="max-width: 100px;">{{ emp.name }}</td>
+                                                    <td class="product-price" style="max-width: 55px;">{{ emp.pu }}</td>
+                                                    <td class="product-price" style="max-width: 55px;">{{ emp.pht }}</td>
+                                                    <td class="product-price"><input (keyup.enter)="changequantiteCommande($event,emp.id)" style="font-size: 18px;width:60px;opacity:1;" class="form-control round input1" placeholder="{{ emp.qt }}" /></td>
+                                                    <td class="product-price">{{ emp.user }}</td>
+                                                    <td class="product-price">{{ emp.qt * emp.pu }}</td>
+                                                    <td class="product-action">
+                                                        <a (click)="deleteProduct(emp.id)" class="action-delete"><i class="feather icon-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-md-3">
+                                            <button class="btn bg-gradient-warning mr-1 mb-1" (click)="transfer()" >
+                                                <span><i class="feather icon-file-text"></i> Transfer</span>
+                                            </button>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <a (click)="gettotal()" style="font-size: 20px;" class="btn btn-light btn-block "><span>Total: {{ total }}</span><br><span>TotalPHT: {{ totalPHT }}</span><br><span> nombre:{{ count }}</span></a>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <button class="btn bg-gradient-info mr-1 mb-1" routerLink="../invoice-facture/{{ numFinterne }}" >
+                                                <span><i class="feather icon-file-text"></i> Print</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+
+       
+            </div>
+            
+        </div>
+    
+

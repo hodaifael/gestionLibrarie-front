@@ -1,0 +1,11 @@
+.input1::placeholder {
+    color: rgb(19, 40, 230);
+    width:100px;
+    font-size: 18px;
+  }
+  input {
+    font-size: 18px;
+  }  
+  th{
+    font-size: 15px;
+} 

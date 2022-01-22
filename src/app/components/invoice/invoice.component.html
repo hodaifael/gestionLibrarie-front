@@ -1,0 +1,98 @@
+
+<div class="container-fluid ">
+<div  class="app-content content">
+                <!-- invoice functionality start -->
+                <section class="invoice-print mb-1">
+                    <div class="row">
+
+                        <fieldset class="col-12 col-md-5 mb-1 mb-md-0">
+                        </fieldset>
+                        <div class="col-12 col-md-7 d-flex flex-column flex-md-row justify-content-end">
+                            <button class="btn bg-gradient-info  mb-1 mb-md-0" onclick="window.print()"> <i class="feather icon-file-text"></i> Print</button>
+                            <button class="btn btn-outline-primary  ml-0 ml-md-1" routerLink="../../addcommande"> <i class="feather icon-download"></i> cancel</button>
+                        </div>
+                    </div>
+                </section>
+                <!-- invoice functionality end -->
+                <!-- invoice page -->
+                <section class="card invoice-page">
+                    <div id="invoice-template" >
+                        <!-- Invoice Company Details -->
+                        
+                        <!--/ Invoice Company Details -->
+
+                        <!-- Invoice Recipient Details -->
+                                <p style="font-size: 60px;" class="center">مكتبة البراء</p><br>
+                                <p style="font-size: 30px;font-family: cursive;" class="center1">Librerie AL BARAE</p>
+                        <div id="invoice-customer-details" class="row pt-2">
+                            <div class="col-sm-6 col-4 ">
+                              
+                                <div class="recipient-contact pb-2">
+                                    <p style="font-size: 20px;font-weight: 900;">
+                                        <i class="feather icon-phone"></i>
+                                        0649836158
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-5 ">
+                                <div class="recipient-contact pb-2">
+                                    <p style="font-size: 20px;font-weight: 900;">Num Commande : {{ CommandeID }}</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-5 ">
+                                <div class="recipient-contact pb-2">
+                                    <p style="font-size: 20px;font-weight: 900;">
+                                        <i class="feather icon-mail"></i>
+                                        Librairiealbarae@gmail.com
+                                    </p>
+                                </div>
+                               
+                            </div>
+                            
+                        </div>
+                        <!--/ Invoice Recipient Details -->
+
+                        <!-- Invoice Items Details -->
+                        <div id="invoice-items-details" class="pt-1 invoice-items-table">
+                            <div class="row">
+                                <div class="table-responsive col-12">
+                                    <table class="table table-borderless" style="width:620px;">
+                                        <thead>
+                                            <tr>
+                                                <th>DESC</th>
+                                                <th>PU</th>
+                                                <th>QT</th>
+                                                <th>TTL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let emp of commandes " style="font-size: 30px;font-weight: 1000;">
+                                                <td style="width:40px;">{{ emp.name }}</td>
+                                                <td style="width:20px;">{{ emp.pu }}</td>
+                                                <td style="width:20px;">{{ emp.qt }} </td>
+                                                <td style="width:20px;">{{ emp.totalligne }}</td>
+                                            </tr>
+                                            <tr >
+                                                <th></th>
+                                                <th style="font-size: 20px;">TOT</th>
+                                                <th colspan="2"  style="font-size: 30px;">{{ total }}</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                       
+
+                        <!-- Invoice Footer -->
+                        
+                        <!--/ Invoice Footer -->
+
+                    </div>
+                </section>
+                <!-- invoice page end -->
+
+            </div>
+          
+        </div>
+    <script src="assets/js/scripts/pages/invoice.js"></script>

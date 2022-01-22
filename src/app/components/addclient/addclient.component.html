@@ -1,0 +1,142 @@
+
+<div class="container-fluid ">
+<div style="top:20px;font-size: 18px;" class="app-content content">
+                    <div class="row">
+                        <div class="col-md-4 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">New Users</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form form-vertical" (ngSubmit)="insertUser()">
+                                            <div class="form-body">
+                                                <div class="row">
+
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Numero client
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="client.num" name="num" placeholder="numclient">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Nom client
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="client.name" name="name" placeholder="name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                CIN client
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="client.cin" name="cin" placeholder="CIN">
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-12">
+                                                        <div class="form-group">
+                                                          
+                                                            <input type="password" hidden  [(ngModel)]="client.point" name="point" >
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    <div class="col-12">
+                                                        <input type="submit" class="btn btn-primary mr-1 mb-1" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-12">
+                            <div class="row">
+                            <div class="col-12 col-md-6">
+                                <section id="search-bar">
+                                    <span class="alert alert-primary">nom de Client</span>
+                                    <div class="search-bar">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <fieldset class="form-group position-relative has-icon-left">
+                                                    <input type="text" [(ngModel)]="search" (input)="searchByNomClient()"   class="form-control round" id="searchbar" >
+                                                    <div class="form-control-position">
+                                                    <i class="feather icon-search px-1"></i>
+                                                    </div>
+                                                </fieldset>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <section id="search-bar">
+                                    <span class="alert alert-primary">Num de Client</span>
+                                    <div class="search-bar">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <fieldset class="form-group position-relative has-icon-left">
+                                                    <input type="text" [(ngModel)]="searchnum" (input)="searchByNumClient()"   class="form-control round" id="searchbar" >
+                                                    <div class="form-control-position">
+                                                    <i class="feather icon-search px-1"></i>
+                                                    </div>
+                                                </fieldset>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                            </div>
+                            <div class="col-12 col-md-12">
+                                <section  class="data-thumb-view-header">                    
+                                    <div class="table-responsive">
+                                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                            <div class="card">
+                                            <table class="table ">
+                                                <thead>
+                                                    <tr>                                                
+                                                        <th>Num</th>
+                                                        <th>Nom</th>
+                                                        <th>CIN</th>
+                                                        <th>Point</th>
+                                                        <th>ACTION</th>
+                                                        <th>detail</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody ng-if="products.length > 0">
+                                                
+                                                    <tr *ngFor="let emp of clients ">
+                                                    
+                                                        <td class="product-name">{{ emp.num }}</td>
+                                                        <td class="product-name">{{ emp.name }}</td>
+                                                        <td class="product-category">{{ emp.cin }}</td>
+                                                        <td class="product-category">{{ emp.point }}</td>
+                                                        <td class="product-action">
+                                                            <a class="action-delete" (click)="deleteclient(emp.id)"><i class="feather icon-trash"></i></a>
+                                                        </td>
+                                                        <td class="product-action">
+                                                            <a class="action-delete" routerLink="../detailbenef/{{ emp.num }}"><i class="fa fa-outdent"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+                <br>
+       
+            </div>                     
+         

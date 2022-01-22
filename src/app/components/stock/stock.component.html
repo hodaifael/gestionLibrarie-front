@@ -1,0 +1,86 @@
+
+<div class="container-fluid ">
+<div style="top:20px;font-size: 18px;" class="app-content content">
+                <!-- Data list view starts -->
+                <section  class="data-thumb-view-header">
+                    
+                    <!-- dataTable starts -->
+                  <div class="table-responsive">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <div class="top">
+                                <div class="actions action-btns">
+                                  
+                                </div>
+                                <div class="action-filters">
+                                    
+                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                        <label><input type="search" class="form-control " style="font-size: 18px;width:300px;" [(ngModel)]="search" (input)="searchByname()" placeholder="" aria-controls="DataTables_Table_0"></label>
+                                    </div>
+                                </div>
+                        </div>  
+                         <div class="card">
+                        <table class="table ">
+                            <thead>
+                                <tr >
+                                   
+                                    <th>Image</th>
+                                    <th>CODEP</th>
+                                    <th>NAME</th>
+                                    <th>CATEGORY</th>
+                                    <th>pu</th>
+                                    <th>Pht</th>
+                                    <th>qt</th>
+                                    <th>ACTION</th>
+                                    <th>image</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-if="products.length > 0">
+                             
+                                <tr *ngFor="let emp of products ">
+                                   
+                                    <td class="product-img"><img src="{{ path }}{{ emp.img }}"  style="width:146px;height:100px;border-radius: 10px;" alt="Img placeholder">
+                                    </td>
+                                    <td class="product-name">{{ emp.codep }}</td>
+                                    <td class="product-name">{{ emp.name }}</td>
+                                    <td class="product-category">{{ emp.type }}</td>
+                                    <td>
+                                        <div class="chip chip-warning">
+                                            <div class="chip-body">
+                                                <div class="chip-text">{{ emp.pu }}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="product-price">{{ emp.pht }}</td>
+                                    <td class="product-price">{{ emp.qt }}</td>
+                                    <td class="product-action">
+                                        <a class="action-edit" routerLink="../editproduct/{{ emp.id }}" ><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                                        <a class="action-delete" (click)="deleteProduct(emp.id)"><i class="feather icon-trash fa-lg"></i></a>
+                                        
+                                    </td>
+                                    <td class="product-action">
+                                        <a class="action-edit" routerLink="../editstock/{{ emp.id }}" ><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                              
+                            </tbody>
+                        </table>
+                       
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- dataTable ends -->
+                
+
+                    <!-- add new sidebar ends -->
+                </section>
+                <!-- Data list view end -->
+
+            </div>
+            
+        
+        </div>
+
+    <!-- END: Content-->
+
+    

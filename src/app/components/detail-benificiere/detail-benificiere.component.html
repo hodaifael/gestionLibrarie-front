@@ -1,0 +1,95 @@
+
+            <div class="container-fluid ">
+                <div style="top:20px;font-size: 18px;" class="app-content content">
+                    <div class="row">                        
+                        <div class="col-6 col-md-6">
+                            <section id="place-order" class="list-view product-checkout">
+                                <div class="checkout-options">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                     
+                                                    <table class="table ">
+                                                        <thead>
+                                                            <tr>                                                
+                                                                <th style="padding-left:30px;">numcommande</th>
+                                                                <th>Point</th>
+                                                                <th>Montant</th>
+                                                                <th>benefice</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let emp of commandesbenef ">
+                                                
+                                                                <td style="padding-left:30px;" class="product-name">{{ emp.allcommande }}</td>
+                                                                <td class="product-category">{{ emp.point }}</td>
+                                                                <td class="product-category">{{ emp.montant }}</td>
+                                                                <td class="product-category">{{ emp.benefice }}</td>
+                                                                
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="4" class="product-category">commande not benef</td>
+                                                            </tr>
+                                                            <tr *ngFor="let emp of commandes ">
+                                                                <td colspan="4" class="product-category">{{emp.numc}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <section id="place-order" class="list-view product-checkout">
+                                <div class="checkout-options">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                     
+                                                    <table class="table ">
+                                                        <thead>
+                                                            <tr>
+                                                            
+                                                                <th>Img</th>
+                                                                <th>name</th>
+                                                                <th>pu</th>
+                                                                <th>qt</th>
+                                                                <th>user</th>
+                                                                <th>Tot</th>
+                                                                <th>client</th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let emp of caisses " style="font-size: 20px;">
+                                                                <td class="product-img"><img src="{{ path }}{{ emp.img }}" style="width:40px;height:40px;" alt="Img placeholder"></td>
+                                                                <td class="product-price">{{ emp.name }}</td>
+                                                                <td class="product-price">{{ emp.pu }}</td>
+                                                                <td class="product-price">{{ emp.qt }}</td>
+                                                                <td class="product-price">{{ emp.user }}</td>
+                                                                <td class="product-price">{{ emp.totalligne }}</td>
+                                                                <td class="product-price">{{ emp.numclient }}</td>
+                                                                
+                                                            </tr>
+                                        
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <a  style="font-size: 24px;" class="btn btn-light btn-block ">Total: </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+      
+            </div>                     
+        

@@ -1,0 +1,86 @@
+
+<div class="container-fluid " >
+<div style="top:20px;" class="app-content content">
+ 
+ <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">New Product</h4>
+                                </div>
+                                <br>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                <button type="text" (click)="chageCodep()"  class="btn btn-outline-info mr-1 mb-1">New code produit</button>
+                                        <form class="form form-vertical" (ngSubmit)="insertProduct()">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form-group">
+                                                                    <label for="first-name-vertical">codep</label>
+                                                                    <input type="text"  class="form-control" [(ngModel)]="prod.codep" name="codep" >
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="email-id-vertical">name</label>
+                                                            <input type="text"  class="form-control" [(ngModel)]="prod.name" name="name" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="email-id-vertical">type</label>
+                                                            <input type="text"  class="form-control" [(ngModel)]="prod.type" name="type" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="email-id-vertical">PU</label>
+                                                            <input type="text"  class="form-control" [(ngModel)]="prod.pu" name="pu" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="email-id-vertical">Pht</label>
+                                                            <input type="text"  class="form-control" [(ngModel)]="prod.pht" name="pht" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                           <label for="email-id-vertical">Image</label><br>
+                                                            <input class="dz-message" type="file"  (change)="imageUpload($event)" />
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    
+                                                    
+                                                   <div class="alert alert-success" *ngIf='message !="" ' role="alert">
+                                                        <p class="mb-0">
+                                                        {{ message }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <input type="submit" class="btn btn-primary mr-1 mb-1" />
+                                                        <button type="reset" routerLink="../facture" class="btn btn-outline-warning mr-1 mb-1">cancel</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+      </div>
+     
+                            </div>
+                        

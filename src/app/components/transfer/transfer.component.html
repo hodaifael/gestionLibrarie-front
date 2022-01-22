@@ -1,0 +1,183 @@
+<div class="container-fluid">
+  <div style="top: 10px; left: 10px; right: 10px" class="app-content content">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="top">
+          <div class="actions action-btns">
+            <div class="dt-buttons btn-group">
+              <button class="btn bg-gradient-info mr-1 mb-1" (click)="today()">
+                <span
+                  ><i class="feather icon-plus"></i> date d'aujourd'hui</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <section id="pick-a-date">
+          <div class="card">
+            <div class="card-body">
+              <input
+                type="date"
+                [(ngModel)]="date"
+                (keyup.enter)="changedate($event)"
+                class="form-control pickadate-months-year"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section id="search-bar">
+      <div class="search-bar">
+        <fieldset class="form-group position-relative has-icon-left">
+          <input
+            type="text"
+            [(ngModel)]="search"
+            (input)="searchByname()"
+            class="form-control round"
+          />
+          <div class="form-control-position">
+            <i class="feather icon-search px-1"></i>
+          </div>
+        </fieldset>
+      </div>
+    </section>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="content-body">
+          <!-- Basic example and Profile cards section start -->
+          <section id="basic-examples" ng-if="products.length > 0">
+            <div class="row match-height">
+              <div
+                class="col-xl-6 col-md-8 col-sm-12"
+                *ngFor="let emp of products"
+              >
+                <div class="card">
+                  <div class="card-content">
+                    <img
+                      class="card-img-top img-fluid"
+                      src="{{ path }}{{ emp.img }}"
+                      style="width: 295px; height: 190px"
+                    />
+                    <div class="card-body">
+                      <h5>{{ emp.name }}</h5>
+                      <div class="row">
+                        <div class="col-12 col-md-5">
+                          <span class="card-text" style="font-size: 18px"
+                            >PU: {{ emp.pu }}</span
+                          ><br />
+                          <span class="card-text" style="font-size: 18px"
+                            >Qt: {{ emp.qt }}</span
+                          >
+                        </div>
+                        <div class="col-12 col-md-7">
+                          <input
+                            type="search"
+                            (keyup.enter)="changequantite($event, emp.codep)"
+                            class="form-control round"
+                            placeholder="quantite"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-6">
+        <section id="place-order" class="list-view product-checkout">
+          <div class="checkout-options">
+            <div class="card">
+              <div class="card-content">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <section id="search-bar">
+                      <div class="search-bar">
+                        <fieldset
+                          class="form-group position-relative has-icon-left"
+                        >
+                          <input
+                            type="number"
+                            (keyup.enter)="addProductInput($event)"
+                            class="form-control round"
+                            autofocus
+                          />
+                          <div class="form-control-position">
+                            <i class="feather icon-search px-1"></i>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </section>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Img</th>
+                          <th>name</th>
+                          <th>pu</th>
+                          <th>qt</th>
+                          <th>user</th>
+                          <th>Tot</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let emp of caisse" style="font-size: 20px">
+                          <td class="product-img">
+                            <img
+                              src="{{ path }}{{ emp.img }}"
+                              style="
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 10px;
+                              "
+                              alt="Img placeholder"
+                            />
+                          </td>
+                          <td class="product-price">{{ emp.name }}</td>
+                          <td class="product-price">{{ emp.pu }}</td>
+                          <td class="product-price">
+                            <input
+                              (keyup.enter)="
+                                changequantiteCommande($event, emp.id)
+                              "
+                              style="font-size: 18px; width: 60px; opacity: 1"
+                              class="form-control round input1"
+                              placeholder="{{ emp.qt }}"
+                            />
+                          </td>
+                          <td class="product-price">{{ emp.user }}</td>
+                          <td class="product-price">{{ emp.totalligne }}</td>
+                          <td class="product-action">
+                            <a
+                              (click)="deleteProduct(emp.id)"
+                              class="action-delete"
+                              ><i class="feather icon-trash"></i
+                            ></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <a
+                    (click)="gettotal()"
+                    style="font-size: 24px"
+                    class="btn btn-light btn-block"
+                    ><span>Total: {{ total }}</span
+                    ><span> nombre:{{ count }}</span></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

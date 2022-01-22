@@ -1,0 +1,176 @@
+    
+
+<div class="container-fluid " >
+<div style="top:20px;" class="app-content content">
+
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <div class="top">
+                <div class="actions action-btns">
+                    <div class="dt-buttons btn-group">
+
+                                <button class="btn bg-gradient-success mr-1 mb-1" (click)="getLastNiveau()" >
+                                    <span><i class="feather icon-plus"></i> Add New Niveau</span>
+                                </button>
+                            
+                    </div>
+                </div>         
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <span class="alert alert-primary">nom du niveau</span>
+            <section id="search-bar">
+                    <div class="search-bar">
+                        <div class="card">
+                             <div class="card-body">
+                                <fieldset class="form-group position-relative has-icon-left">
+                                    <input type="text" [(ngModel)]="nomN" (keyup.enter)="chagenomNiveau($event)"   class="form-control round" id="searchbar" >
+                                    <div class="form-control-position">
+                                        <i class="feather icon-search px-1"></i>
+                                    </div>
+                                </fieldset>
+                            </div>    
+                        </div>
+                    </div>
+            </section>
+        </div>
+        <div class="col-12 col-md-4">
+            <span class="alert alert-primary">numero de niveau</span>
+            <section id="search-bar">
+                    <div class="search-bar">
+                        <div class="card">
+                             <div class="card-body">
+                                <fieldset class="form-group position-relative has-icon-left">
+                                    <input type="text" [(ngModel)]="numN" (keyup.enter)="chagenumNiveau($event)"   class="form-control round" id="searchbar" >
+                                    <div class="form-control-position">
+                                        <i class="feather icon-search px-1"></i>
+                                    </div>
+                                </fieldset>
+                            </div>    
+                        </div>
+                    </div>
+            </section>
+        </div>
+    </div>     
+     
+    <section id="search-bar">
+        <div class="search-bar">            
+            <fieldset class="form-group position-relative has-icon-left">
+            <input type="text" [(ngModel)]="search" (input)="searchByname()" class="form-control round"  >
+            <div class="form-control-position">
+                <i class="feather icon-search px-1"></i>
+            </div>
+            </fieldset>
+            
+                        
+        </div>
+    </section>      
+    <div class="row">
+        <div class="col-12 col-md-6">                 
+            <div class="content-body">
+                <!-- Basic example and Profile cards section start -->
+                <section id="basic-examples" ng-if="products.length > 0">
+                    <div class="row match-height" >
+                        
+                        <div class="col-xl-6 col-md-8 col-sm-12" *ngFor="let emp of niveaux ">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <h5>{{ emp.nomNiveau }}</h5>
+                                        
+                                        <div class="card-btns d-flex justify-content-between mt-2">
+                                            <span class="card-text">Num: {{ emp.numNiveau }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-8 col-sm-12" *ngFor="let emp of products ">
+                            <div class="card">
+                                <div class="card-content">
+                                    <img class="card-img-top img-fluid" src="{{ path }}{{ emp.img }}" style="width:295px;height:190px;" >
+                                    <div class="card-body">
+                                        <h5>{{ emp.name }}</h5>
+                                        
+                                        <div class="card-btns d-flex justify-content-between mt-2">
+                                            <span class="card-text">PU: {{ emp.pu }}</span>
+                                            <input type="search" (keyup.enter)="changequantite($event,emp.codep)" style="width:170px;" class="form-control round" width="50px;" placeholder="quantite"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                             
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+            <div class="col-6 col-md-6">
+                <section id="place-order" class="list-view product-checkout">
+                    <div class="checkout-options">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <section id="search-bar">
+                                            <div class="search-bar">
+                                                <fieldset class="form-group position-relative has-icon-left">
+                                                    <input type="number" (keyup.enter)="addProductInput($event)"  class="form-control round" autofocus />    
+                                                    <div class="form-control-position">
+                                                            <i class="feather icon-search px-1"></i>
+                                                    </div>
+                                                </fieldset>
+                                                
+                                            </div>
+                                        </section>   
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+                                                
+                                                    <th>Img</th>
+                                                    <th>pu</th>
+                                                    <th>qt</th>
+                                                    <th>user</th>
+                                                    <th>Tot</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let emp of commandes  " style="font-size: 20px;">
+                                                    <td class="product-img"><img src="{{ path }}{{ emp.img }}" style="width:40px;height:40px;border-radius: 10px;" alt="Img placeholder"></td>
+                                                    <td class="product-price">{{ emp.pu }}</td>
+                                                    <td class="product-price"><input (keyup.enter)="changequantiteCommande($event,emp.id)" style="font-size: 18px;width:60px;opacity:1;" class="form-control round input1" placeholder="{{ emp.qt }}" /></td>
+                                                    <td class="product-price">{{ emp.user }}</td>
+                                                    <td class="product-price">{{ emp.totalligne }}</td>
+                                                    <td class="product-action">
+                                                        <a (click)="deleteProduct(emp.id)" class="action-delete"><i class="feather icon-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                     <div class="row">
+                                        <div class="col-12 col-md-12">
+                                            <a (click)="gettotal()" style="font-size: 20px;" class="btn btn-light btn-block ">Total: {{ total }}</a>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+
+       
+            </div>
+            
+        </div>
+       
+         </div>
+   
+

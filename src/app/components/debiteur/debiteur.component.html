@@ -1,0 +1,180 @@
+
+<div class="container-fluid ">
+<div style="top:20px;font-size: 18px;" class="app-content content">
+                    <div class="row">
+                        <div class="col-md-4 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">New debiteur</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form form-vertical" (ngSubmit)="insertdebiteur()">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Numero Commande
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="debit.numcommande" name="numcommande" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Nom debiteur
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="debit.name" name="name" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Tel debiteur
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="debit.tel" name="tel" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                total debiteur
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="debit.total" name="total" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                avance debiteur
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="debit.avance" name="avance" >
+                                                        </div> 
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                   <div class="alert alert-success" *ngIf='message !="" ' role="alert">
+                                                        <p class="mb-0">
+                                                        {{ message }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <input type="submit" class="btn btn-primary mr-1 mb-1" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-12">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <section id="search-bar">
+                                            <span class="alert alert-primary">nom de Client</span>
+                                            <div class="search-bar">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <fieldset class="form-group position-relative has-icon-left">
+                                                            <input type="text" [(ngModel)]="search" (input)="searchByNomclient()"   class="form-control round" id="searchbar" >
+                                                            <div class="form-control-position">
+                                                                <i class="feather icon-search px-1"></i>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>    
+                                                </div>
+                                            </div>
+                                    </section>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <section id="search-bar">
+                                            <span class="alert alert-primary">numero de Commande</span>
+                                            <div class="search-bar">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <fieldset class="form-group position-relative has-icon-left">
+                                                            <input type="text" [(ngModel)]="numcmd" (input)="searchByNumcommande()"   class="form-control round" id="searchbar" >
+                                                            <div class="form-control-position">
+                                                                <i class="feather icon-search px-1"></i>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>    
+                                                </div>
+                                            </div>
+                                    </section>
+                                </div>
+                                
+                                <div class="col-md-12 col-12">
+                                    <section  class="data-thumb-view-header">                    
+                                        <div class="table-responsive">
+                                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                <div class="card"> 
+                                                <table class="table ">
+                                                    <thead>
+                                                        <tr>                                                
+                                                            <th>Num cmd</th>
+                                                            <th>Nom</th>
+                                                            <th>Tel</th>
+                                                            <th>total</th>
+                                                            <th>avance</th>
+                                                            <th>rest</th>
+                                                            <th>del</th>
+                                                            <th></th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody >
+                                                    
+                                                        <tr *ngFor="let emp of debiteurs " >
+                                                        
+                                                            <td class="product-name">{{ emp.numcommande }}</td>
+                                                            <td class="product-name">{{ emp.name }}</td>
+                                                            <td class="product-category">{{ emp.tel }}</td>
+                                                            <td class="product-category">{{ emp.total }}</td>
+                                                            <td class="product-category"><input (keyup.enter)="changeavance($event,emp.id)" style="font-size: 18px;width:60px;opacity:1;" class="form-control round input1" placeholder="{{ emp.avance }}" /></td>
+                                                            <td class="product-category">{{ emp.total-emp.avance }}</td>
+                                                            <td class="product-action">
+                                                                <a class="action-delete" (click)="deletedebiteurs(emp.id)"><i class="feather icon-trash"></i></a>
+                                                            </td>
+                                                            <td class="product-action"  >
+                                                                <a class="action-delete" (click)="addcommande(emp)"><i class="fa fa-plus"></i></a>
+                                                            </td>
+                                                            <td class="product-action"  >
+                                                                <div *ngIf="emp.total===emp.avance">
+                                                                    <a class="action-delete" ><i class="fa fa-check-circle"></i></a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr  >
+                                                        
+                                                            <td class="product-name"></td>
+                                                            <td class="product-name"></td>
+                                                            <td class="product-category"></td>
+                                                            <td class="product-category">{{ totals }}</td>
+                                                            <td class="product-category">{{ avances }}</td>
+                                                            <td class="product-category">{{ rests }}</td>
+                                                            <td class="product-action">
+                                                            </td>
+                                                            <td class="product-action"  >
+                                                            </td>
+                                                            <td class="product-action"  >
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      
+            </div>                     
+        

@@ -1,0 +1,110 @@
+
+<div class="container-fluid ">
+<div style="top:20px;font-size: 18px;" class="app-content content">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">New Users</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form form-vertical" (ngSubmit)="insertUser()">
+                                            <div class="form-body">
+                                                <div class="row">
+
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Numero User
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="user.numuser" name="numuser" placeholder="numuser">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Nom User
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="user.name" name="name" placeholder="name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Email User
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="user.email" name="email" placeholder="Email">
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Password User
+                                                            </div>
+                                                            <input type="password"  class="form-control" [(ngModel)]="user.password" name="password" placeholder="Password">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Type User
+                                                            </div>
+                                                            <fieldset class="form-group">
+                                                                <select name="type"  [(ngModel)]="user.type" class="custom-select" id="customSelect">
+                                                                    <option value="superuser">superuser</option>
+                                                                    <option value="user">user</option>                                                               
+                                                                </select>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-12">
+                                                        <input type="submit" class="btn btn-primary mr-1 mb-1" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <section  class="data-thumb-view-header">                    
+                                <div class="table-responsive">
+                                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                           <div class="card">
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>                                                
+                                                    <th>Numero User</th>
+                                                    <th>Nom</th>
+                                                    <th>Email</th>
+                                                    <th>ACTION</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-if="products.length > 0">
+                                            
+                                                <tr *ngFor="let emp of users ">
+                                                
+                                                    <td class="product-name">{{ emp.numuser }}</td>
+                                                    <td class="product-name">{{ emp.name }}</td>
+                                                    <td class="product-category">{{ emp.email }}</td>
+                                                    <td class="product-action">
+                                                        <a class="action-delete" (click)="deleteusers(emp.id)"><i class="feather icon-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <br>
+       
+            </div>                     
+         

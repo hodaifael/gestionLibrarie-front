@@ -1,0 +1,94 @@
+
+<div class="container-fluid ">
+<div style="top:20px;font-size: 18px;" class="app-content content">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">New fournisseur</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form form-vertical" (ngSubmit)="insertfournisseur()">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Numero Fournisseur
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="four.numfour" name="numfour" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Nom fournisseur
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="four.name" name="name" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Tel fournisseur
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="four.tel" name="tel" >
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                   <div class="alert alert-success" *ngIf='message !="" ' role="alert">
+                                                        <p class="mb-0">
+                                                        {{ message }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <input type="submit" class="btn btn-primary mr-1 mb-1" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <section  class="data-thumb-view-header">                    
+                                <div class="table-responsive">
+                                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                          <div class="card"> 
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>                                                
+                                                    <th>Numero Four</th>
+                                                    <th>Nom</th>
+                                                    <th>Tel</th>
+                                                    <th>ACTION</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody >
+                                            
+                                                <tr *ngFor="let emp of fournisseurs ">
+                                                
+                                                    <td class="product-name">{{ emp.numfour }}</td>
+                                                    <td class="product-name">{{ emp.name }}</td>
+                                                    <td class="product-category">{{ emp.tel }}</td>
+                                                    <td class="product-action">
+                                                        <a class="action-delete" (click)="deletefournisseur(emp.id)"><i class="feather icon-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+      
+            </div>                     
+        

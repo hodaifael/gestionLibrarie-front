@@ -1,0 +1,84 @@
+<div class="container-fluid ">
+<div style="top:20px;" class="app-content content">
+                <!-- invoice functionality start -->
+                <section class="invoice-print mb-1">
+                    <div class="row">
+
+                        <fieldset class="col-12 col-md-5 mb-1 mb-md-0">
+                        </fieldset>
+                        <div class="col-12 col-md-7 d-flex flex-column flex-md-row justify-content-end">
+                            <button class="btn bg-gradient-info  mb-1 mb-md-0" onclick="window.print()"> <i class="feather icon-file-text"></i> Print</button>
+                            <button class="btn btn-outline-primary  ml-0 ml-md-1" routerLink="../../facture"> <i class="feather icon-download"></i> cancel</button>
+                        </div>
+                    </div>
+                </section>
+                <!-- invoice functionality end -->
+                <!-- invoice page -->
+                <section class="card invoice-page">
+                    <div id="invoice-template" class="card-body">
+                       
+
+                        <!-- Invoice Items Details -->
+                        <div id="invoice-items-details" class="pt-1 invoice-items-table">
+                            <div class="row">
+                                <div class="table-responsive col-12">
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <tr style="font-size: 20px;font-weight: 900; border-width:1px;border-style:solid;">                                  
+                                                <td>Num Interne  :  {{ factureID }}</td>
+                                                <td>Num Facture  :  {{ numfacture }}</td>
+                                                <td>Num Four  :  {{ numfour }}</td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr style="font-size: 20px;font-weight: 900;">
+                                                <th>DESC</th>
+                                                <th>PU</th>
+                                                <th>QT</th>
+                                                <th>TTL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let emp of facture " style="font-size: 20px;font-weight: 900;">                                  
+                                                <td>{{ emp.name }}</td>
+                                                <td>{{ emp.pu }}</td>
+                                                <td>{{ emp.qt }} </td>
+                                                <td>{{ emp.pu*emp.qt }}</td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="invoice-total-details" class="invoice-total-table">                      
+                            <div class="row">
+                                <div class="col-7 offset-5">
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                <tr>
+                                                    <th>TOTAL</th>
+                                                    <td style="font-size: 20px;font-weight: 900;">{{ total }} DH</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Invoice Footer -->
+                        
+                        <!--/ Invoice Footer -->
+
+                    </div>
+                </section>
+                <!-- invoice page end -->
+
+            </div>
+          
+        </div>

@@ -1,0 +1,45 @@
+
+<div class="container-fluid ">
+<div style="top:20px;font-size: 18px;" class="app-content content">
+                    <div class="row">
+                        
+                            <section  class="data-thumb-view-header">                    
+                                <div class="table-responsive">
+                                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                           <div class="card">
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>                                                
+                                                    <th>Num</th>
+                                                    <th>Nom</th>
+                                                    <th>CIN</th>
+                                                    <th>Point</th>
+                                                    <th>Montant</th>
+                                                    <th>ACTION</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-if="products.length > 0">
+                                            
+                                                <tr *ngFor="let emp of beneficiaries ">
+                                                
+                                                    <td class="product-name">{{ emp.num }}</td>
+                                                    <td class="product-name">{{ emp.name }}</td>
+                                                    <td class="product-category">{{ emp.cin }}</td>
+                                                    <td class="product-category">{{ emp.point }}</td>
+                                                    <td class="product-category">{{ emp.montant }}</td>
+                                                    <td class="product-action">
+                                                        <a class="action-delete" (click)="deletebeneficiaries(emp.id)"><i class="feather icon-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+                                </div>
+                            </section>
+                </div>
+                <br>
+       
+            </div>                     
+         

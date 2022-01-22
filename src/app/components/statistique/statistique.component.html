@@ -1,0 +1,89 @@
+ 
+    <div class="container-fluid ">
+        <div style="top:20px;" class="app-content content">
+            <section  class="data-thumb-view-header">
+                <div class="table-responsive">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <div class="top">
+                            <div class="row">
+                                <div class="col-12 col-md-3">
+                                    <section id="pick-a-date">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <input type='date' [(ngModel)]="dateEntre" (input)="changedateEntre()"  class="form-control pickadate-months-year" />
+                                            </div>
+                                        </div>    
+                                    </section>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <section id="pick-a-date">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <input type='date' [(ngModel)]="dateSortie"  (input)="changedateSortie()" class="form-control pickadate-months-year" />
+                                            </div>
+                                        </div>    
+                                    </section>
+                                </div>
+                                <div class="col-12 col-md-5 ,nbmfvdrsc C VBJ21">
+                                    <div class="action-filters">  
+                                        <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                        <button class="btn bg-gradient-success mr-1 mb-1" (click)="getStatistique()" >
+                                                        <span>Search</span>
+                                        </button>                                      
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-1">
+                                    <div class="action-filters">
+                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                        <label><input type="search" class="form-control " style="font-size: 18px;width:300px;" [(ngModel)]="search" (input)="searchByname()" placeholder="" aria-controls="DataTables_Table_0"></label>
+                                    </div>
+                                </div>
+                                </div>
+                                
+                            </div>
+                        </div>  
+                        <div class="card">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+                                    
+                                        <th>IMAGE</th>
+                                        <th>CODEP</th>
+                                        <th>NAME</th>
+                                        <th>RETOUR</th>
+                                        <th>COMMANDE</th>
+                                        <th>CAISSE</th>
+                                        <th>facture</th>
+                                        <th>TOTALE</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-if="products.length > 0">
+                                    <tr *ngFor="let emp of products ">
+                                   
+                                        <td class="product-img"><img src="{{ path }}{{ emp.img }}"  style="width:146px;height:100px;" alt="Img placeholder"></td>
+                                        <td class="product-name">{{ emp.codep }}</td>
+                                        <td class="product-name">{{ emp.name }}</td>
+                                        <td class="product-name">{{ emp.retour }}</td>
+                                        <td class="product-category">{{ emp.commande }}</td>
+                                        <td class="product-category">{{ emp.caisse }}</td>
+                                        <td class="product-category">{{ emp.facture }}</td>
+                                        <td>
+                                            <div class="chip chip-warning">
+                                                <div class="chip-body">
+                                                    <div class="chip-text">{{ emp.totalligne }}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    

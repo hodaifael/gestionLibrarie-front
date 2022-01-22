@@ -1,0 +1,128 @@
+
+<div class="container-fluid ">
+<div style="top:20px;font-size: 18px;" class="app-content content">
+                    <div class="row">
+                        <div class="col-12 col-md-8">
+                            <div class="top">
+                                <div class="actions action-btns">
+                                    <div class="dt-buttons btn-group">
+                                        <button class="btn bg-gradient-info mr-1 mb-1" (click)="today()" >
+                                            <span><i class="feather icon-plus"></i> date d'aujourd'hui</span>
+                                        </button>                         
+                                    </div>
+                                </div>         
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                        <section id="pick-a-date">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <input type='date' [(ngModel)]="datekhadamat" (keyup.enter)="changedate($event)" class="form-control pickadate-months-year" />
+                                    </div>
+                                </div>    
+                            </section>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">New Khadamat</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form form-vertical" (ngSubmit)="insertkhadamat()">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                type khadamat
+                                                            </div>
+                                                            <fieldset class="form-group">
+                                                                <select name="type"  [(ngModel)]="khad.type" class="custom-select" id="customSelect">
+                                                                    <option ngDefaultControl *ngFor="let c of Type" [ngValue]="c.name" >{{c.name}}</option>  
+                                                                </select>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                type Recharge
+                                                            </div>
+                                                            <fieldset class="form-group">
+                                                                <select name="typerecharge"  [(ngModel)]="khad.typerecharge" class="custom-select" id="customSelect">
+                                                                    <option ngDefaultControl *ngFor="let c of Typerecharge" [ngValue]="c.name" >{{c.name}}</option>  
+                                                                </select>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Montant
+                                                            </div>
+                                                            <input type="text"  class="form-control" [(ngModel)]="khad.montant" name="montant" >
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                   <div class="alert alert-success" *ngIf='message !="" ' role="alert">
+                                                        <p class="mb-0">
+                                                        {{ message }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <input type="submit" class="btn btn-primary mr-1 mb-1" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <section  class="data-thumb-view-header">                    
+                                <div class="table-responsive">
+                                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                          <div class="card"> 
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>                                                
+                                                    <th>Type Khadamat</th>
+                                                    <th>Type Abonemment</th>
+                                                    <th>Montant</th>
+                                                    <th>User</th>
+                                                    <th>ACTION</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-if="products.length > 0">
+                                            
+                                                <tr *ngFor="let emp of Khadamat ">
+                                                
+                                                    <td class="product-name">{{ emp.type }}</td>
+                                                    <td class="product-name">{{ emp.typerecharge }}</td>
+                                                    <td class="product-category">{{ emp.montant }}</td>
+                                                    <td class="product-category">{{ emp.user }}</td>
+                                                    <td class="product-action">
+                                                        <a class="action-delete" (click)="deletekhadamat(emp.id)"><i class="feather icon-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+      
+            </div>                     
+        

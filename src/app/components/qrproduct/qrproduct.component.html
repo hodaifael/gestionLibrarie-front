@@ -1,0 +1,21 @@
+            <div class="container-fluid ">
+            <div style="top:20px;font-size: 18px;" class="app-content content">
+                <section  class="data-thumb-view-header">
+                    <h1  style="font-size: 100px;" >{{ productType }}</h1>
+                    <div class="row">
+                            <div  *ngFor="let emp of list " class="col-12 col-md-4">
+                                {{ affiche(emp.codep) }}
+                                <div style="border: 15px solid {{ emp.color }} " class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <qrcode  [qrdata]="myAngularxQrCode"  [width]="200" [level]="'M'"></qrcode>
+                                            <h2>{{ emp.name }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>

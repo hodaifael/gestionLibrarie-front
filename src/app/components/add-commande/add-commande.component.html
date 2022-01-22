@@ -1,0 +1,370 @@
+<div class="container-fluid">
+  <div style="top: 20px" class="app-content content">
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="top">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-md-7">
+                  <div class="actions action-btns">
+                    <span> Nom Client : {{ client.name }} </span><br />
+                    <span> CIN : {{ client.cin }}</span
+                    ><br />
+                    <span> Point : {{ client.point }}</span>
+                  </div>
+                </div>
+                <div class="col-12 col-md-5">
+                  <div *ngIf="numclient != 0" class="actions action-btns">
+                    <div *ngIf="buttonAddbenef" class="actions action-btns">
+                      <button
+                        class="btn bg-gradient-info mr-1 mb-1"
+                        (click)="insertbeneficiaries()"
+                      >
+                        <span
+                          ><i class="feather icon-plus"></i> Add benefit</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <section id="search-bar">
+          <span class="alert alert-primary">numero de Client</span>
+          <div class="search-bar">
+            <div class="card">
+              <div class="card-body">
+                <fieldset class="position-relative has-icon-left">
+                  <input
+                    type="text"
+                    placeholder="{{ numclient }}"
+                    (keyup.enter)="chagenumclient($event)"
+                    class="form-control round input1"
+                    id="searchbar"
+                  />
+                  <div class="form-control-position">
+                    <i class="feather icon-search px-1"></i>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col-12 col-md-4">
+        <span class="alert alert-primary">numero de commande</span>
+        <section id="search-bar">
+          <div class="search-bar">
+            <div class="card">
+              <div class="card-body">
+                <fieldset class="has-icon-left">
+                  <div class="row">
+                    <div class="col-12 col-md-8">
+                      <input
+                        type="text"
+                        #numcommandeinput
+                        (keyup)="chagenumcommandeInput($event)"
+                        placeholder="{{ numcommande }}"
+                        class="form-control round input1"
+                        id="searchbar"
+                      />
+                      <div class="form-control-position">
+                        <i class="feather icon-search px-1"></i>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <button
+                        class="btn bg-gradient-dark mr-1 mb-1"
+                        (click)="chagenumcommande()"
+                        (dblclick)="getLastCommande()"
+                      >
+                        <span> search</span>
+                      </button>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-5">
+        <div class="col-12 col-md-12">
+          <section id="search-bar">
+            <div class="search-bar">
+              <fieldset class="form-group position-relative has-icon-left">
+                <input
+                  type="text"
+                  (keyup)="searchByname($event)"
+                  class="form-control round"
+                />
+                <div class="form-control-position">
+                  <i class="feather icon-search px-1"></i>
+                </div>
+              </fieldset>
+            </div>
+          </section>
+        </div>
+        <div class="content-body">
+          <section id="basic-examples">
+            <div *ngIf="products.length == 0">
+              <section
+                *ngIf="numclient != 0"
+                id="place-order"
+                class="list-view product-checkout"
+              >
+                <div class="checkout-options">
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Cmd</th>
+                                <th>Point</th>
+                                <th>Montant</th>
+                                <th>benef</th>
+                                <th>NewMont</th>
+                                <th>del</th>
+                              </tr>
+                            </thead>
+                            <tbody ng-if="products.length > 0">
+                              <tr *ngFor="let emp of beneficiaries">
+                                <td class="product-name">
+                                  {{ emp.allcommande }}
+                                </td>
+                                <td class="product-category">
+                                  {{ emp.point }}
+                                </td>
+                                <td class="product-category">
+                                  {{ emp.montant }} DH
+                                </td>
+                                <td class="product-category">
+                                  {{ emp.benefice }}
+                                </td>
+                                <td
+                                  class="product-category"
+                                  style="background-color: green; color: white"
+                                >
+                                  {{ emp.montant - emp.benefice }} DH
+                                </td>
+                                <td class="product-action">
+                                  <a
+                                    (click)="deletebeneficiaries(emp.id)"
+                                    class="action-delete"
+                                    ><i class="feather icon-trash"></i
+                                  ></a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <div
+                class="col-xl-6 col-md-8 col-sm-12"
+                *ngFor="let emp of niveaux"
+              >
+                <div class="card">
+                  <div class="card-content">
+                    <div class="card-body">
+                      <h5>{{ emp.nomNiveau }}</h5>
+                      <div class="row">
+                        <div class="col-12 col-md-4">
+                          <div
+                            class="
+                              card-btns
+                              d-flex
+                              justify-content-between
+                              mt-2
+                            "
+                          >
+                            <span class="card-text"
+                              >Num: {{ emp.numNiveau }}</span
+                            >
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                          <button
+                            class="btn bg-gradient-success mr-1 mb-1"
+                            (click)="selectNiveau(emp.numNiveau)"
+                          >
+                            <span>select</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row match-height">
+              <div
+                class="col-xl-6 col-md-8 col-sm-12"
+                *ngFor="let emp of products"
+              >
+                <div class="card">
+                  <div class="card-content">
+                    <img
+                      class="card-img-top img-fluid"
+                      src="{{ path }}{{ emp.img }}"
+                      style="width: 295px; height: 190px"
+                    />
+                    <div class="card-body">
+                      <h5>{{ emp.name }}</h5>
+
+                      <div
+                        class="card-btns d-flex justify-content-between mt-2"
+                      >
+                        <span class="card-text">PU: {{ emp.pu }}</span>
+                        <div *ngIf="emp.qt > 0">
+                          <input
+                            type="search"
+                            (keyup.enter)="changequantite($event, emp.codep)"
+                            style="width: 170px"
+                            class="form-control round"
+                            width="50px;"
+                            placeholder="quantite"
+                          />
+                        </div>
+                        <br />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-7">
+        <section id="place-order" class="list-view product-checkout">
+          <div class="checkout-options">
+            <div class="card">
+              <div class="card-content">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <section id="search-bar">
+                      <div class="search-bar">
+                        <fieldset
+                          class="form-group position-relative has-icon-left"
+                        >
+                          <input
+                            type="text"
+                            #codepinput
+                            (keyup.enter)="addProductInput($event)"
+                            class="form-control round"
+                            autofocus
+                          />
+                          <div class="form-control-position">
+                            <i class="feather icon-search px-1"></i>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </section>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Img</th>
+                          <th>name</th>
+                          <th>pu</th>
+                          <th>qt</th>
+                          <th>user</th>
+                          <th>Tot</th>
+                          <th>del</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          *ngFor="let emp of commandes"
+                          style="font-size: 20px"
+                        >
+                          <td class="product-img">
+                            <img
+                              src="{{ path }}{{ emp.img }}"
+                              style="
+                                width: 80px;
+                                height: 80px;
+                                border-radius: 10px;
+                              "
+                              alt="Img placeholder"
+                            />
+                          </td>
+                          <td class="product-price">{{ emp.name }}</td>
+                          <td class="product-price">{{ emp.pu }}</td>
+                          <td class="product-price">
+                            <input
+                              (keyup.enter)="
+                                changequantiteCommande($event, emp.id)
+                              "
+                              style="font-size: 18px; width: 60px; opacity: 1"
+                              class="form-control round input1"
+                              placeholder="{{ emp.qt }}"
+                            />
+                          </td>
+                          <td class="product-price">{{ emp.user }}</td>
+                          <td class="product-price">{{ emp.totalligne }}</td>
+                          <td class="product-action">
+                            <a
+                              (click)="deleteProduct(emp.id)"
+                              class="action-delete"
+                              ><i class="feather icon-trash"></i
+                            ></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-md-3">
+                      <button
+                        class="btn bg-gradient-danger mr-1 mb-1"
+                        (dblclick)="videCommande()"
+                      >
+                        <span
+                          ><i class="fa fa-times" aria-hidden="true"></i>
+                          vide</span
+                        >
+                      </button>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <a
+                        (click)="gettotal()"
+                        style="font-size: 20px"
+                        class="btn btn-light btn-block"
+                        >Total: {{ total }} DH</a
+                      >
+                    </div>
+                    <div class="col-12 col-md-3">
+                      <button
+                        class="btn bg-gradient-info mr-1 mb-1"
+                        routerLink="../invoice/{{ numcommande }}"
+                      >
+                        <span
+                          ><i class="feather icon-file-text"></i> Print</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
